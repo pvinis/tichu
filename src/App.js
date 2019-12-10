@@ -1,39 +1,20 @@
 
+import React from 'react';
 import { Client } from 'boardgame.io/react';
 import {TicTacToeBoard} from './TicTacToeBoard';
-
-const isVictory = (cells) =>
-{
-	return cells[0] === '0'
-  }
-
-  const isDraw = (cells) => {
-	return cells.filter(c => c === null).length == 0;
-  }
+import { Local } from 'boardgame.io/multiplayer';
+import { TicTacToe } from './game';
 
 
-  const TicTacToe = {
-	setup: () => ({ cells: Array(9).fill(null) }),
-
-	moves: {
-	  clickCell: (G, ctx, id) => {
-		if (G.cells[id] === null) {
-		  G.cells[id] = ctx.currentPlayer;
-		}
-	  },
-	},
-
-	endIf: (G, ctx) => {
-	  if (isVictory(G.cells)) {
-		return { winner: ctx.currentPlayer };
-	  }
-	  if (isDraw(G.cells)) {
-		return { draw: true };
-	  }
-	},
-  };
-
-export const App = Client({
+const TicTacToeClient = Client({
 	game: TicTacToe,
 	board: TicTacToeBoard,
+	multiplayer: Local(),
 });
+
+export const App = () => (
+	<div>
+<TicTacToeClient playerID='0' />
+<TicTacToeClient playerID='1' />
+	</div>
+)
