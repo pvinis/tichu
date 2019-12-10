@@ -1,20 +1,25 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Client } from 'boardgame.io/react';
 import {TicTacToeBoard} from './TicTacToeBoard';
-import { Local } from 'boardgame.io/multiplayer';
+import { SocketIO } from 'boardgame.io/multiplayer'
 import { TicTacToe } from './game';
 
 
 const TicTacToeClient = Client({
 	game: TicTacToe,
 	board: TicTacToeBoard,
-	multiplayer: Local(),
+	multiplayer: SocketIO({server: 'localhost:8000'}),
 });
 
-export const App = () => (
+export const App = () => {
+	const [id, setId] = useState(undefined)
+
+	return (
 	<div>
-<TicTacToeClient playerID='0' />
-<TicTacToeClient playerID='1' />
+		<button onClick={() => setId(0)}>Be Player 0</button>
+		<button onClick={() => setId(1)}>Be Player 1</button>
+		{id === 0 && <TicTacToeClient playerID='0' />}
+		{id === 1 && <TicTacToeClient playerID='1' />}
 	</div>
-)
+)}
