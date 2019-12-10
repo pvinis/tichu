@@ -1,13 +1,13 @@
 
 import { Client } from 'boardgame.io/react';
-import TicTacToeBoard from './TicTacToeBoard';
+import {TicTacToeBoard} from './TicTacToeBoard';
 
-function IsVictory(cells) {
+const isVictory = (cells) =>
+{
 	return cells[0] === '0'
   }
 
-  // Return true if all `cells` are occupied.
-  function IsDraw(cells) {
+  const isDraw = (cells) => {
 	return cells.filter(c => c === null).length == 0;
   }
 
@@ -24,10 +24,10 @@ function IsVictory(cells) {
 	},
 
 	endIf: (G, ctx) => {
-	  if (IsVictory(G.cells)) {
+	  if (isVictory(G.cells)) {
 		return { winner: ctx.currentPlayer };
 	  }
-	  if (IsDraw(G.cells)) {
+	  if (isDraw(G.cells)) {
 		return { draw: true };
 	  }
 	},

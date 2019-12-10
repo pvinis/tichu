@@ -1,25 +1,25 @@
 import React from 'react';
 
-class TicTacToeBoard extends React.Component {
-  onClick(id) {
-    if (this.isActive(id)) {
-      this.props.moves.clickCell(id);
-      this.props.events.endTurn();
+
+export const TicTacToeBoard = (props) => {
+  const onClick = (id) => {
+    if (isActive(id)) {
+      props.moves.clickCell(id);
+      props.events.endTurn();
     }
   }
 
-  isActive(id) {
-    if (!this.props.isActive) return false;
-    if (this.props.G.cells[id] !== null) return false;
+  const isActive=(id) =>{
+    if (!props.isActive) return false;
+    if (props.G.cells[id] !== null) return false;
     return true;
   }
 
-  render() {
     let winner = '';
-    if (this.props.ctx.gameover) {
+    if (props.ctx.gameover) {
       winner =
-        this.props.ctx.gameover.winner !== undefined ? (
-          <div id="winner">Winner: {this.props.ctx.gameover.winner}</div>
+        props.ctx.gameover.winner !== undefined ? (
+          <div id="winner">Winner: {props.ctx.gameover.winner}</div>
         ) : (
           <div id="winner">Draw!</div>
         );
@@ -39,8 +39,8 @@ class TicTacToeBoard extends React.Component {
       for (let j = 0; j < 3; j++) {
         const id = 3 * i + j;
         cells.push(
-          <td style={cellStyle} key={id} onClick={() => this.onClick(id)}>
-            {this.props.G.cells[id]}
+          <td style={cellStyle} key={id} onClick={() => onClick(id)}>
+            {props.G.cells[id]}
           </td>
         );
       }
@@ -56,6 +56,3 @@ class TicTacToeBoard extends React.Component {
       </div>
     );
   }
-}
-
-export default TicTacToeBoard
