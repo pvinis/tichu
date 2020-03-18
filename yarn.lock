@@ -1000,14 +1000,14 @@
   resolved "https://registry.npmjs.org/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@decadejs/eslint-config-base@^1.0.4":
+"@decadejs/eslint-config-base@1.0.4", "@decadejs/eslint-config-base@^1.0.4":
   version "1.0.4"
-  resolved "https://registry.npmjs.org/@decadejs/eslint-config-base/-/eslint-config-base-1.0.4.tgz#d8d17cf8bc0fe4b00d70d5385e89ce1d87a4b052"
+  resolved "https://registry.yarnpkg.com/@decadejs/eslint-config-base/-/eslint-config-base-1.0.4.tgz#d8d17cf8bc0fe4b00d70d5385e89ce1d87a4b052"
   integrity sha512-lYU1FZYncueGLAeeXZ+ecS1mbVpVFRIPZHxNzHN8qJuqkJyxJwsnaVjI8i6tMIzVva7plCylf0cSHsFUEqnyOg==
 
-"@decadejs/eslint-config-react@^1.0.4":
+"@decadejs/eslint-config-react@1.0.4":
   version "1.0.4"
-  resolved "https://registry.npmjs.org/@decadejs/eslint-config-react/-/eslint-config-react-1.0.4.tgz#e629dac0a9219ae9ee387ca996f120de1f6ea600"
+  resolved "https://registry.yarnpkg.com/@decadejs/eslint-config-react/-/eslint-config-react-1.0.4.tgz#e629dac0a9219ae9ee387ca996f120de1f6ea600"
   integrity sha512-v0V8+w0sK77KZlq5gFpW2+TDCc5SsqRSn6PbSz6OcXlAqBMF/b9EWUT23/qsah+VtPt+SCUioKOwk85TkXYHZQ==
   dependencies:
     "@decadejs/eslint-config-base" "^1.0.4"
@@ -1358,18 +1358,18 @@
     pretty-format "^24.0.0"
     redent "^3.0.0"
 
-"@testing-library/react@^9.3.2":
+"@testing-library/react@9.5.0":
   version "9.5.0"
-  resolved "https://registry.npmjs.org/@testing-library/react/-/react-9.5.0.tgz#71531655a7890b61e77a1b39452fbedf0472ca5e"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-9.5.0.tgz#71531655a7890b61e77a1b39452fbedf0472ca5e"
   integrity sha512-di1b+D0p+rfeboHO5W7gTVeZDIK5+maEgstrZbWZSSvxDyfDRkkyBE1AJR5Psd6doNldluXlCWqXriUfqu/9Qg==
   dependencies:
     "@babel/runtime" "^7.8.4"
     "@testing-library/dom" "^6.15.0"
     "@types/testing-library__react" "^9.1.2"
 
-"@testing-library/user-event@^7.1.2":
+"@testing-library/user-event@7.2.1":
   version "7.2.1"
-  resolved "https://registry.npmjs.org/@testing-library/user-event/-/user-event-7.2.1.tgz#2ad4e844175a3738cb9e7064be5ea070b8863a1c"
+  resolved "https://registry.yarnpkg.com/@testing-library/user-event/-/user-event-7.2.1.tgz#2ad4e844175a3738cb9e7064be5ea070b8863a1c"
   integrity sha512-oZ0Ib5I4Z2pUEcoo95cT1cr6slco9WY7yiPpG+RGNkj8YcYgJnM7pXmYmorNOReh8MIGcKSqXyeGjxnr8YiZbA==
 
 "@types/babel__core@^7.1.0":
@@ -2383,9 +2383,9 @@ bn.js@^4.0.0, bn.js@^4.1.0, bn.js@^4.1.1, bn.js@^4.4.0:
   resolved "https://registry.npmjs.org/bn.js/-/bn.js-4.11.8.tgz#2cde09eb5ee341f484746bb0309b3253b1b1442f"
   integrity sha512-ItfYfPLkWHUjckQCk8xC+LwxgK8NYcXywGigJgSwOP8Y2iyWT4f2vsZnoOXTTbo+o5yXmIUJ4gn5538SO5S3gA==
 
-boardgame.io@^0.38.1:
+boardgame.io@0.38.1:
   version "0.38.1"
-  resolved "https://registry.npmjs.org/boardgame.io/-/boardgame.io-0.38.1.tgz#eb369ad4892d37fdd258b2a58b291e83a4587303"
+  resolved "https://registry.yarnpkg.com/boardgame.io/-/boardgame.io-0.38.1.tgz#eb369ad4892d37fdd258b2a58b291e83a4587303"
   integrity sha512-TCEHPD9zVekUwcRxtV9vUCtxZSQGsigBq/S2f+6eCOagaqdgKODMkK2wusXLwCSvxCfkkJg2xV/V04+u4NiOIA==
   dependencies:
     "@koa/cors" "^2.2.1"
@@ -4262,9 +4262,9 @@ eslint@6.8.0, eslint@^6.6.0:
     text-table "^0.2.0"
     v8-compile-cache "^2.0.3"
 
-esm@^3.2.25:
+esm@3.2.25:
   version "3.2.25"
-  resolved "https://registry.npmjs.org/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.25.tgz#342c18c29d56157688ba5ce31f8431fbb795cc10"
   integrity sha512-U1suiZ2oDVWv4zPO56S0NcR5QriEahGtdN2OR6FiOG4WJvcjBVFB0qI4+eKoWFH483PKGuLuu6V8Z4T5g63UVA==
 
 espree@^6.1.2:
@@ -8889,9 +8889,9 @@ react-dev-utils@^10.2.0:
     strip-ansi "6.0.0"
     text-table "0.2.0"
 
-react-dom@^16.13.0:
+react-dom@16.13.0:
   version "16.13.0"
-  resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
+  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.13.0.tgz#cdde54b48eb9e8a0ca1b3dc9943d9bb409b81866"
   integrity sha512-y09d2c4cG220DzdlFkPTnVvGTszVvNpC73v+AaLGLHbkpy3SSgvYq8x0rNwPJ/Rk/CicTNgk0hbHNw1gMEZAXg==
   dependencies:
     loose-envify "^1.1.0"
@@ -8969,9 +8969,9 @@ react-scripts@3.4.0:
   optionalDependencies:
     fsevents "2.1.2"
 
-react@^16.13.0:
+react@16.13.0:
   version "16.13.0"
-  resolved "https://registry.npmjs.org/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.13.0.tgz#d046eabcdf64e457bbeed1e792e235e1b9934cf7"
   integrity sha512-TSavZz2iSLkq5/oiE7gnFzmURKZMltmi193rm5HEoUDAXpzT9Kzw6oNZnGoai/4+fUnm7FqS5dwgUL34TujcWQ==
   dependencies:
     loose-envify "^1.1.0"
