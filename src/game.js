@@ -1,10 +1,8 @@
-
-const isVictory = (cells) =>
-{
+const isVictory = (cells: any[]) => {
 	return cells[0] === '0'
 }
 
-const isDraw = (cells) => {
+const isDraw = (cells: any[]) => {
 	return cells.filter(c => c === null).length == 0
 }
 
@@ -13,19 +11,19 @@ export const TicTacToe = {
 	setup: () => ({ cells: Array(9).fill(null) }),
 
 	moves: {
-	  clickCell: (G, ctx, id) => {
+		clickCell: (G: any, ctx: any, id: any) => {
 			if (G.cells[id] === null) {
-		  G.cells[id] = ctx.currentPlayer
+				G.cells[id] = ctx.currentPlayer
 			}
-	  },
+		},
 	},
 
-	endIf: (G, ctx) => {
-	  if (isVictory(G.cells)) {
+	endIf: (G: any, ctx: any) => {
+		if (isVictory(G.cells)) {
 			return { winner: ctx.currentPlayer }
-	  }
-	  if (isDraw(G.cells)) {
+		}
+		if (isDraw(G.cells)) {
 			return { draw: true }
-	  }
+		}
 	},
 }
