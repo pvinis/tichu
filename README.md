@@ -1,6 +1,6 @@
 ## Tichu
 
-![](span1.png)
+![Span1](span1.png)
 
 ### How to run
 `yarn start`
