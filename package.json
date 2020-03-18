@@ -10,7 +10,7 @@
         "start-server": "node -r esm src/server.js"
     },
     "dependencies": {
-        "@testing-library/jest-dom": "4.2.4",
+        "@testing-library/jest-dom": "5.0.0",
         "@testing-library/react": "^9.3.2",
         "@testing-library/user-event": "^7.1.2",
         "boardgame.io": "^0.38.1",
