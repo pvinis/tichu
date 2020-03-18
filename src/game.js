@@ -1,3 +1,7 @@
+
+import { createDeck } from './deck'
+
+
 const isVictory = (cells) => {
 	return cells[0] === '0'
 }
@@ -26,4 +30,35 @@ export const TicTacToe = {
 			return { draw: true }
 		}
 	},
+}
+
+
+export const Tichu = {
+	name: 'Tichu',
+	setup: (ctx, setupData) => {
+		const deck = createDeck()
+
+		const players = [
+			{ name: '0', cards: [] },
+			{ name: '1', cards: [] },
+			{ name: '2', cards: [] },
+			{ name: '3', cards: [] },
+		]
+
+		let i = 0
+		deck.forEach(card => {
+			players[i].cards.push(card)
+			i = (i+1) % 4
+		})
+
+		console.log(players)
+		return { players }
+	},
+
+	moves: {
+		pass: (G, ctx) => {},
+		play: (G, ctx) => {},
+		bomb: (G, ctx) => {},
+	},
+
 }

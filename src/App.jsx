@@ -1,16 +1,17 @@
 
 import React, { useState } from 'react'
 import { Client } from 'boardgame.io/react'
-import { SocketIO } from 'boardgame.io/multiplayer'
+import { Local } from 'boardgame.io/multiplayer'
 
-import { TicTacToeBoard } from './TicTacToeBoard'
-import { TicTacToe } from './game'
+import { TichuTable } from './TichuTable'
+import { Tichu } from './game'
 
 
-const TicTacToeClient = Client({
-	game: TicTacToe,
-	board: TicTacToeBoard,
-	multiplayer: SocketIO({ server: 'localhost:8000' }),
+const TichuClient = Client({
+	game: Tichu,
+	numPlayers: 4,
+	board: TichuTable,
+	multiplayer: Local(),
 })
 
 export const App = () => {
@@ -20,7 +21,11 @@ export const App = () => {
 		<div>
 			<button onClick={() => setId(0)}>Be Player 0</button>
 			<button onClick={() => setId(1)}>Be Player 1</button>
-			{id === 0 && <TicTacToeClient playerID='0' />}
-			{id === 1 && <TicTacToeClient playerID='1' />}
+			<button onClick={() => setId(2)}>Be Player 2</button>
+			<button onClick={() => setId(3)}>Be Player 3</button>
+			{id === 0 && <TichuClient playerID='0' />}
+			{id === 1 && <TichuClient playerID='1' />}
+			{id === 2 && <TichuClient playerID='2' />}
+			{id === 3 && <TichuClient playerID='3' />}
 		</div>
 	)}
