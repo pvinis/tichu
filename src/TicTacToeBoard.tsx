@@ -19,9 +19,9 @@ export const TicTacToeBoard = (props) => {
 	if (props.ctx.gameover) {
 		winner =
         props.ctx.gameover.winner !== undefined ? (
-	<div id="winner">Winner: {props.ctx.gameover.winner}</div>
+        	<div id="winner">Winner: {props.ctx.gameover.winner}</div>
         ) : (
-	<div id="winner">Draw!</div>
+        	<div id="winner">Draw!</div>
         )
 	}
 
