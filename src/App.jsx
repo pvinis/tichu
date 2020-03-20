@@ -15,7 +15,7 @@ const TichuClient = Client({
 })
 
 export const App = () => {
-	const [id, setId] = useState(undefined)
+	const [id, setId] = useState(0)
 
 	return (
 		<div>

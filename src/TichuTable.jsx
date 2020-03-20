@@ -1,27 +1,38 @@
 import React from 'react'
+import { animated, useSprings } from 'react-spring'
+import { useGesture } from 'react-with-gesture'
 
 import { assetForCard } from './utils'
 
 
-const Bla = (props) => {
+const Hand = ({ pid, cards }) => {
+	const bind = useGesture(({ args: [origIndex], down, delta: [x] }) => {
+		console.log('aa', down, origIndex)
+	})
 	return (
-		<div style={{ opacity: props.for === props.playerID ? 1 : 0.3 }}>
-			<p>player {props.for}</p>
-			{props.G.players[props.for].cards.map(c => (
-				<img src={assetForCard(c)} />
-			))}
+		<div style={{ opacity: 1 }}>
+			<p>player {pid}</p>
+			<div style={{ display: 'flex', flexDirection: 'row' }}>
+				{cards.map((card, index) => (
+					<animated.div key={assetForCard(card)} {...bind(index)}>
+						<img src={assetForCard(card)} />
+					</animated.div>
+				))}
+			</div>
 		</div>
 	)
 }
-export const TichuTable = (props) => {
 
-	console.log(props)
+export const TichuTable = (props) => {
 	return (
 		<div>
-			<Bla {...props} for='0' />
-			<Bla {...props} for='1' />
-			<Bla {...props} for='2' />
-			<Bla {...props} for='3' />
+			<div>
+				<p>table</p>
+				{props.G.table.cards.map(c => (
+					<img src={assetForCard(c)} />
+				))}
+			</div>
+			<Hand pid='0' cards={props.G.players[0].cards} />
 		</div>
 	)
 }

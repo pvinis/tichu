@@ -45,6 +45,8 @@ export const Tichu = {
 			{ name: '3', cards: [] },
 		]
 
+		const table = { cards: [] }
+
 		let i = 0
 		deck.forEach(card => {
 			players[i].cards.push(card)
@@ -52,7 +54,7 @@ export const Tichu = {
 		})
 
 		console.log(players)
-		return { players }
+		return { players, table }
 	},
 
 	moves: {
