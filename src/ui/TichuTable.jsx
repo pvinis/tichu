@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { animated } from 'react-spring'
-import produce, { original } from 'immer'
+import produce from 'immer'
 import { orderBy } from 'lodash'
 
 import { assetForCard } from '../logic/utils'
@@ -30,7 +30,7 @@ const Hand = ({ pid, playerState: { name, color, cards }, myTurn, pass }) => {
 	}
 
 	return (
-		<div style={{ opacity: 1, opacity: myTurn ? 1 : 0.3 }}>
+		<div style={{ opacity: myTurn ? 1 : 0.3 }}>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				<p>{name}</p>
 				<button onClick={() => orderCards('asc')}>small - big</button>

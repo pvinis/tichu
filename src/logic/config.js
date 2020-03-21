@@ -2,5 +2,8 @@ import { __DEV__ } from './globals'
 
 
 export const Config = {
-	debugLocalMultiplayer: __DEV__,
+	useLocalMultiplayer: __DEV__,
+
+	// debugLocalMultiplayer: __DEV__,
+	debugLocalMultiplayer: true,
 }
