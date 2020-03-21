@@ -14,7 +14,7 @@ const TichuClient = Client({
 	game: Tichu,
 	numPlayers: 4,
 	board: TichuTable,
-	multiplayer: Local(),
+	multiplayer: Config.useLocalMultiplayer? Local() : SocketIO({server: 'ip'}),
 })
 
 export const App = () => {
@@ -36,6 +36,8 @@ export const App = () => {
 	setRoomReady(true)
 	}
 
+	const connect = () => {
+	}
 
 	useEffect(() => {
 		// get
@@ -48,7 +50,6 @@ export const App = () => {
 		// 	const { ip } = doc.data()
 		// 	setSid(ip)
 		// })
-
 	}, [])
 
 	if (Config.debugLocalMultiplayer) {
