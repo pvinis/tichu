@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import { animated } from 'react-spring'
-import produce from 'immer'
+import produce, { original } from 'immer'
+import { orderBy } from 'lodash'
 
 import { assetForCard } from './utils'
+import { cardValue } from './cards'
 
 
 const Hand = ({ pid, cards }) => {
-
+	const [orderedCards, setOrderedCards] = useState(cards)
 	const [selected, setSelected] = useState([])
 
 	const toggle = (i) => {
@@ -17,14 +19,26 @@ const Hand = ({ pid, cards }) => {
 			} else {
 				draft.splice(index, 1)
 			}
+			return
 		}))
 	}
 
+	const orderCards = (order) => {
+		setOrderedCards(produce(orderedCards, draft => {
+			return orderBy(draft, [card => cardValue(card)], [order])
+		}))
+	}
+
+	console.log(orderedCards)
 	return (
 		<div style={{ opacity: 1 }}>
-			<p>player {pid}</p>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
-				{cards.map((card, index) => (
+				<p>player {pid}</p>
+				<button onClick={() => orderCards('asc')}>small - big</button>
+				<button onClick={() => orderCards('desc')}>big - small</button>
+			</div>
+			<div style={{ display: 'flex', flexDirection: 'row' }}>
+				{orderedCards.map((card, index) => (
 					<animated.div key={assetForCard(card)} onClick={() => toggle(index)} style={{
 						border: selected.includes(index) && '3px solid blue',
 					}}>

@@ -22,10 +22,21 @@ export const CardName = {
 }
 
 export const SpecialCard = {
-	Dragon: 0,
-	Phoenix: 1,
-	Dog: 2,
-	Mahjong: 3,
+	Mahjong: 0,
+	Dog: 1,
+
+	// all other cards
+
+	Phoenix: 15,
+	Dragon: 16,
 }
 
 // type Card = SpecialCard | { suit: Suit, name: CardName }
+
+export const cardValue = (card) => {
+	if (typeof card === 'number') {
+		return card
+	} else {
+		return card.name
+	}
+}
