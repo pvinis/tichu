@@ -4,6 +4,7 @@ import { useGesture } from 'react-with-gesture'
 
 import { assetForCard } from './utils'
 
+// https://xstate.js.org/viz/?gist=463a54294433298b6b065c45f6329b89
 
 const Hand = ({ pid, cards }) => {
 	const bind = useGesture(({ args: [origIndex], down, delta: [x] }) => {
