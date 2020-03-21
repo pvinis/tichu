@@ -7,7 +7,7 @@ import { assetForCard } from '../logic/utils'
 import { cardValue } from '../logic/cards'
 
 
-const Hand = ({ pid, cards, pass }) => {
+const Hand = ({ pid, playerState: { name, color, cards }, myTurn, pass }) => {
 	const [orderedCards, setOrderedCards] = useState(cards)
 	const [selected, setSelected] = useState([])
 
@@ -30,9 +30,9 @@ const Hand = ({ pid, cards, pass }) => {
 	}
 
 	return (
-		<div style={{ opacity: 1 }}>
+		<div style={{ opacity: 1, opacity: myTurn ? 1 : 0.3 }}>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
-				<p>player {pid}</p>
+				<p>{name}</p>
 				<button onClick={() => orderCards('asc')}>small - big</button>
 				<button onClick={() => orderCards('desc')}>big - small</button>
 				<button onClick={() => pass()}>PASS</button>
@@ -64,7 +64,9 @@ export const TichuTable = (props) => {
 					<img src={assetForCard(c)} />
 				))}
 			</div>
-			<Hand pid='0' cards={props.G.players[0].cards}
+			<Hand pid={props.playerID} cards={props.G.players[0].cards}
+				myTurn={props.ctx.currentPlayer === props.playerID}
+				playerState={props.G.players[props.playerID]}
 				pass={props.moves.pass}
 			/>
 		</div>

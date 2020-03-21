@@ -39,10 +39,10 @@ export const Tichu = {
 		const deck = createDeck()
 
 		const players = [
-			{ name: '0', cards: [] },
-			{ name: '1', cards: [] },
-			{ name: '2', cards: [] },
-			{ name: '3', cards: [] },
+			{ name: 'Alice', color: 'orange', cards: [] },
+			{ name: 'Beth', color: 'lime', cards: [] },
+			{ name: 'Chloe', color: 'cyan', cards: [] },
+			{ name: 'Dana', color: 'purple', cards: [] },
 		]
 
 		const table = { cards: [] }
