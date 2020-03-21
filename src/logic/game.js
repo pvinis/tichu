@@ -53,12 +53,13 @@ export const Tichu = {
 			i = (i+1) % 4
 		})
 
-		console.log(players)
 		return { players, table }
 	},
 
 	moves: {
-		pass: (G, ctx) => {},
+		pass: (G, ctx) => {
+			ctx.events.endTurn()
+		},
 		play: (G, ctx) => {},
 		bomb: (G, ctx) => {},
 	},

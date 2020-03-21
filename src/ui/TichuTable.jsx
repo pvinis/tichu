@@ -3,11 +3,11 @@ import { animated } from 'react-spring'
 import produce, { original } from 'immer'
 import { orderBy } from 'lodash'
 
-import { assetForCard } from './utils'
-import { cardValue } from './cards'
+import { assetForCard } from '../logic/utils'
+import { cardValue } from '../logic/cards'
 
 
-const Hand = ({ pid, cards }) => {
+const Hand = ({ pid, cards, pass }) => {
 	const [orderedCards, setOrderedCards] = useState(cards)
 	const [selected, setSelected] = useState([])
 
@@ -29,18 +29,21 @@ const Hand = ({ pid, cards }) => {
 		}))
 	}
 
-	console.log(orderedCards)
 	return (
 		<div style={{ opacity: 1 }}>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				<p>player {pid}</p>
 				<button onClick={() => orderCards('asc')}>small - big</button>
 				<button onClick={() => orderCards('desc')}>big - small</button>
+				<button onClick={() => pass()}>PASS</button>
+				<button onClick={() => orderCards('desc')}>PLAY CARDS</button>
 			</div>
-			<div style={{ display: 'flex', flexDirection: 'row' }}>
+			<div style={{ display: 'flex', flexDirection: 'row', height: 200, alignItems: 'flex-end' }}>
 				{orderedCards.map((card, index) => (
 					<animated.div key={assetForCard(card)} onClick={() => toggle(index)} style={{
-						border: selected.includes(index) && '3px solid blue',
+						marginRight: -50,
+						marginBottom: selected.includes(index) && 20,
+						border: selected.includes(index) ? '2px solid blue' : '2px solid black',
 					}}>
 						<img src={assetForCard(card)} />
 					</animated.div>
@@ -51,15 +54,19 @@ const Hand = ({ pid, cards }) => {
 }
 
 export const TichuTable = (props) => {
+	console.log(props)
 	return (
 		<div>
 			<div>
 				<p>table</p>
+				<p>current Player {props.ctx.currentPlayer}</p>
 				{props.G.table.cards.map(c => (
 					<img src={assetForCard(c)} />
 				))}
 			</div>
-			<Hand pid='0' cards={props.G.players[0].cards} />
+			<Hand pid='0' cards={props.G.players[0].cards}
+				pass={props.moves.pass}
+			/>
 		</div>
 	)
 }
