@@ -5588,6 +5588,11 @@ immer@^1.8.0:
   resolved "https://registry.npmjs.org/immer/-/immer-1.12.1.tgz#40c6e5b292c00560836c2993bda3a24379d466f5"
   integrity sha512-3fmKM6ovaqDt0CdC9daXpNi5x/YCYS3i4cwLdTVkhJdk5jrDXoPs7lCm3IqM3yhfSnz4tjjxbRG2CziQ7m8ztg==
 
+immer@^6.0.2:
+  version "6.0.2"
+  resolved "https://registry.npmjs.org/immer/-/immer-6.0.2.tgz#5bc08dc4930c756d0749533a2afbd88c8de0cd19"
+  integrity sha512-56CMvUMZl4kkWJFFUe1TjBgGbyb9ibzpLyHD+RSKSVdytuDXgT/HXO1S+GJVywMVl5neGTdAogoR15eRVEd10Q==
+
 import-cwd@^2.0.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/import-cwd/-/import-cwd-2.1.0.tgz#aa6cf36e722761285cb371ec6519f53e2435b0a9"
@@ -9278,10 +9283,10 @@ react-spring@8.0.27:
     "@babel/runtime" "^7.3.1"
     prop-types "^15.5.8"
 
-react-with-gesture@4.0.8:
-  version "4.0.8"
-  resolved "https://registry.yarnpkg.com/react-with-gesture/-/react-with-gesture-4.0.8.tgz#ce6db9e667ef13120797e641f1a00f934aed6c36"
-  integrity sha512-VIJ1K2/UT67m+OnqYIgJUdYEqVmJDPfbZBoqUMYKts6WA0EbEC7YRMBEzxgy/jvVdafg9L2GSuFtUokpskKHag==
+react-use-gesture@^7.0.5:
+  version "7.0.5"
+  resolved "https://registry.npmjs.org/react-use-gesture/-/react-use-gesture-7.0.5.tgz#e260ecf03a4e537cc7d9624bc2cff54e943f505a"
+  integrity sha512-8/CYG76/fLypdlPgRqxTQ2l987uc0XBQL8ax0cnA/tbeM5jU4KoQH+FG3ya6v4pMqPN1KpJQyc1QYEbKgA0QMQ==
 
 react@16.13.1:
   version "16.13.1"

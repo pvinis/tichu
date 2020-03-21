@@ -1,21 +1,33 @@
-import React from 'react'
-import { animated, useSprings } from 'react-spring'
-import { useGesture } from 'react-with-gesture'
+import React, { useState } from 'react'
+import { animated } from 'react-spring'
+import produce from 'immer'
 
 import { assetForCard } from './utils'
 
-// https://xstate.js.org/viz/?gist=463a54294433298b6b065c45f6329b89
 
 const Hand = ({ pid, cards }) => {
-	const bind = useGesture(({ args: [origIndex], down, delta: [x] }) => {
-		console.log('aa', down, origIndex)
-	})
+
+	const [selected, setSelected] = useState([])
+
+	const toggle = (i) => {
+		setSelected(produce(selected, draft => {
+			const index = draft.indexOf(i)
+			if (index === -1) {
+				draft.push(i)
+			} else {
+				draft.splice(index, 1)
+			}
+		}))
+	}
+
 	return (
 		<div style={{ opacity: 1 }}>
 			<p>player {pid}</p>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				{cards.map((card, index) => (
-					<animated.div key={assetForCard(card)} {...bind(index)}>
+					<animated.div key={assetForCard(card)} onClick={() => toggle(index)} style={{
+						border: selected.includes(index) && '3px solid blue',
+					}}>
 						<img src={assetForCard(card)} />
 					</animated.div>
 				))}
