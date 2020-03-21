@@ -23,6 +23,8 @@ export const App = () => {
 	const [roomReady, setRoomReady] = useState(false)
 	const [enteredSid, setEnteredSid] = useState('')
 
+
+
 	const generate = async () =>  {
 		setRoomReady(false)
 		const s = shortid.generate()
