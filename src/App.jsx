@@ -14,7 +14,7 @@ const TichuClient = Client({
 	game: Tichu,
 	numPlayers: 4,
 	board: TichuTable,
-	multiplayer: Config.useLocalMultiplayer? Local() : SocketIO({server: 'ip'}),
+	multiplayer: Config.useLocalMultiplayer? Local() : SocketIO({server: 'https://tichu-game-server.herokuapp.com'}),
 })
 
 export const App = () => {
