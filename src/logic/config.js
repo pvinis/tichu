@@ -1,3 +1,6 @@
+import { __DEV__ } from './globals'
+
+
 export const Config = {
-	debugLocalMultiplayer: true,
+	debugLocalMultiplayer: __DEV__,
 }
