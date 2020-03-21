@@ -1236,7 +1236,12 @@
   resolved "https://registry.npmjs.org/@csstools/normalize.css/-/normalize.css-10.1.0.tgz#f0950bba18819512d42f7197e56c518aa491cf18"
   integrity sha512-ij4wRiunFfaJxjB0BdrYHIH8FxBJpOwNPhhAcunlmPdXudL1WQV1qoP9un6JsEBAgQH+7UXyyjh0g7jTxXK6tg==
 
-"@decadejs/eslint-config-base@1.0.4", "@decadejs/eslint-config-base@^1.0.4":
+"@decadejs/eslint-config-base@1.0.5":
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/@decadejs/eslint-config-base/-/eslint-config-base-1.0.5.tgz#5c549f074fd11be34e0c1c651835964b8a10ef93"
+  integrity sha512-RQqh8e2hYVuTwm5NszGU4KcEWhSPZe65+v2rL71m9pd+50BB4B8yAyJ7L4zwQpNf6wPd2RFv9lSXVLlgei7yfA==
+
+"@decadejs/eslint-config-base@^1.0.4":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@decadejs/eslint-config-base/-/eslint-config-base-1.0.4.tgz#d8d17cf8bc0fe4b00d70d5385e89ce1d87a4b052"
   integrity sha512-lYU1FZYncueGLAeeXZ+ecS1mbVpVFRIPZHxNzHN8qJuqkJyxJwsnaVjI8i6tMIzVva7plCylf0cSHsFUEqnyOg==
