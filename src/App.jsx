@@ -86,5 +86,3 @@ export const App = () => {
 			{ id === 3 && <TichuClient playerID='3' />}
 		</div>
 	)}
-
-	// unneeded comment
