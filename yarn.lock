@@ -904,6 +904,13 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
+"@babel/runtime@^7.10.2":
+  version "7.10.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.10.2.tgz#d103f21f2602497d38348a32e008637d506db839"
+  integrity sha512-6sF3uQw2ivImfVIl62RZ7MXhO2tap69WeWK57vAaimT6AZbE4FbqjdEJIN1UqoD6wI6B+1n9UiagafH1sxjOtg==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/template@^7.4.0", "@babel/template@^7.8.3", "@babel/template@^7.8.6":
   version "7.8.6"
   resolved "https://registry.npmjs.org/@babel/template/-/template-7.8.6.tgz#86b22af15f828dfb086474f964dcc3e39c43ce2b"
@@ -1388,6 +1395,16 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
+"@jest/types@^25.5.0":
+  version "25.5.0"
+  resolved "https://registry.yarnpkg.com/@jest/types/-/types-25.5.0.tgz#4d6a4793f7b9599fc3680877b856a97dbccf2a9d"
+  integrity sha512-OXD0RgQ86Tu3MazKo8bnrkDRaDXXMGUqd+kTtLtK1Zb7CRzQcaSRPPPV37SvYTdevXEBVxe0HXylEjs8ibkmCw==
+  dependencies:
+    "@types/istanbul-lib-coverage" "^2.0.0"
+    "@types/istanbul-reports" "^1.1.1"
+    "@types/yargs" "^15.0.0"
+    chalk "^3.0.0"
+
 "@koa/cors@^2.2.1":
   version "2.2.3"
   resolved "https://registry.npmjs.org/@koa/cors/-/cors-2.2.3.tgz#c32a9907acbee1e72fedfb0b9ac840d2e6f9be57"
@@ -1576,16 +1593,15 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@testing-library/dom@^7.0.2":
-  version "7.1.0"
-  resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-7.1.0.tgz#edf364ac2f2294107c28a2a4499f7409f326d895"
-  integrity sha512-/R++TMdxmhPdcGxamIQLovh2fwheYeO5UKOVi9IgeN+tfJw0/4SPokywevlNQXW9x2QDcaR1LqFO9FI+yHNmhw==
+"@testing-library/dom@^7.9.0":
+  version "7.9.0"
+  resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.9.0.tgz#3805cda47ab691645775c59c93c9044a2cad4c91"
+  integrity sha512-WYnJx9I94cYKib/Ber2BU3v1dUB+4n5wnJpvWJLTiwgERRTSElsivEtfX5S0LSljS122One6Bewhx2kgoZKXzA==
   dependencies:
-    "@babel/runtime" "^7.8.4"
-    "@types/testing-library__dom" "^6.12.1"
+    "@babel/runtime" "^7.10.2"
     aria-query "^4.0.2"
-    dom-accessibility-api "^0.3.0"
-    pretty-format "^25.1.0"
+    dom-accessibility-api "^0.4.4"
+    pretty-format "^25.5.0"
 
 "@testing-library/jest-dom@5.1.1":
   version "5.1.1"
@@ -1603,14 +1619,14 @@
     pretty-format "^25.1.0"
     redent "^3.0.0"
 
-"@testing-library/react@10.0.1":
-  version "10.0.1"
-  resolved "https://registry.npmjs.org/@testing-library/react/-/react-10.0.1.tgz#4f5e2a8836257c5bd3df640b21d7bea5a0d83ead"
-  integrity sha512-sMHWud2dcymOzq2AhEniICSijEwKeTiBX+K0y36FYNY7wH2t0SIP1o732Bf5dDY0jYoMC2hj2UJSVpZC/rDsWg==
+"@testing-library/react@10.0.6":
+  version "10.0.6"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-10.0.6.tgz#e1e569135badb7367cc6ac9823e376eccb0280e0"
+  integrity sha512-7cZ2sHN6zTW1b/pNKzA0icZozshOOuiEQq/zCcf4LUCNGKAOnGCxZDQI7qjpO6lMITmi4Qs0VU1j9Cd4Z36e+w==
   dependencies:
-    "@babel/runtime" "^7.8.7"
-    "@testing-library/dom" "^7.0.2"
-    "@types/testing-library__react" "^9.1.3"
+    "@babel/runtime" "^7.10.2"
+    "@testing-library/dom" "^7.9.0"
+    "@types/testing-library__react" "^10.0.1"
 
 "@testing-library/user-event@10.0.0":
   version "10.0.0"
@@ -1778,7 +1794,7 @@
   resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-1.0.1.tgz#0a851d3bd96498fa25c33ab7278ed3bd65f06c3e"
   integrity sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
 
-"@types/testing-library__dom@*", "@types/testing-library__dom@^6.12.1":
+"@types/testing-library__dom@*":
   version "6.14.0"
   resolved "https://registry.npmjs.org/@types/testing-library__dom/-/testing-library__dom-6.14.0.tgz#1aede831cb4ed4a398448df5a2c54b54a365644e"
   integrity sha512-sMl7OSv0AvMOqn1UJ6j1unPMIHRXen0Ita1ujnMX912rrOcawe4f7wu0Zt9GIQhBhJvH2BaibqFgQ3lP+Pj2hA==
@@ -1792,10 +1808,10 @@
   dependencies:
     "@types/jest" "*"
 
-"@types/testing-library__react@^9.1.3":
-  version "9.1.3"
-  resolved "https://registry.npmjs.org/@types/testing-library__react/-/testing-library__react-9.1.3.tgz#35eca61cc6ea923543796f16034882a1603d7302"
-  integrity sha512-iCdNPKU3IsYwRK9JieSYAiX0+aYDXOGAmrC/3/M7AqqSDKnWWVv07X+Zk1uFSL7cMTUYzv4lQRfohucEocn5/w==
+"@types/testing-library__react@^10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@types/testing-library__react/-/testing-library__react-10.0.1.tgz#92bb4a02394bf44428e35f1da2970ed77f803593"
+  integrity sha512-RbDwmActAckbujLZeVO/daSfdL1pnjVqas25UueOkAY5r7vriavWf0Zqg7ghXMHa8ycD/kLkv8QOj31LmSYwww==
   dependencies:
     "@types/react-dom" "*"
     "@types/testing-library__dom" "*"
@@ -4158,10 +4174,10 @@ doctrine@^3.0.0:
   dependencies:
     esutils "^2.0.2"
 
-dom-accessibility-api@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.npmjs.org/dom-accessibility-api/-/dom-accessibility-api-0.3.0.tgz#511e5993dd673b97c87ea47dba0e3892f7e0c983"
-  integrity sha512-PzwHEmsRP3IGY4gv/Ug+rMeaTIyTJvadCb+ujYXYeIylbHJezIyNToe8KfEgHTCEYyC+/bUghYOGg8yMGlZ6vA==
+dom-accessibility-api@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.4.4.tgz#c2f9fb8b591bc19581e7ef3e6fe35baf1967c498"
+  integrity sha512-XBM62jdDc06IXSujkqw6BugEWiDkp6jphtzVJf1kgPQGvfzaU7/jRtRSF/mxc8DBCIm2LS3bN1dCa5Sfxx982A==
 
 dom-converter@^0.2:
   version "0.2.0"
@@ -7880,7 +7896,7 @@ node-notifier@^5.4.2:
     shellwords "^0.1.1"
     which "^1.3.0"
 
-node-pre-gyp@*, node-pre-gyp@^0.14.0:
+node-pre-gyp@^0.14.0:
   version "0.14.0"
   resolved "https://registry.npmjs.org/node-pre-gyp/-/node-pre-gyp-0.14.0.tgz#9a0596533b877289bcad4e143982ca3d904ddc83"
   integrity sha512-+CvDC7ZttU/sSt9rFjix/P05iS43qHCOOGzcr3Ry99bXG7VX953+vFyEuph/tfqoYu8dttBkE86JSKBO2OzcxA==
@@ -9359,6 +9375,16 @@ pretty-format@^25.1.0:
   integrity sha512-46zLRSGLd02Rp+Lhad9zzuNZ+swunitn8zIpfD2B4OPCRLXbM87RJT2aBLBWYOznNUML/2l/ReMyWNC80PJBUQ==
   dependencies:
     "@jest/types" "^25.1.0"
+    ansi-regex "^5.0.0"
+    ansi-styles "^4.0.0"
+    react-is "^16.12.0"
+
+pretty-format@^25.5.0:
+  version "25.5.0"
+  resolved "https://registry.yarnpkg.com/pretty-format/-/pretty-format-25.5.0.tgz#7873c1d774f682c34b8d48b6743a2bf2ac55791a"
+  integrity sha512-kbo/kq2LQ/A/is0PQwsEHM7Ca6//bGPPvU6UnsdDRSKTWxT/ru/xb88v4BJf6a69H+uTytOEsTusT9ksd/1iWQ==
+  dependencies:
+    "@jest/types" "^25.5.0"
     ansi-regex "^5.0.0"
     ansi-styles "^4.0.0"
     react-is "^16.12.0"
