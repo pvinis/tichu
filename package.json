@@ -25,7 +25,7 @@
         "react-scripts": "3.4.1",
         "react-spring": "8.0.27",
         "react-use-gesture": "7.0.5",
-        "shortid": "2.2.15",
+        "shortid": "2.2.16",
         "shuffle-array": "1.0.1"
     },
     "devDependencies": {
