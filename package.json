@@ -22,7 +22,7 @@
         "public-ip": "4.0.0",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "react-scripts": "3.4.1",
+        "react-scripts": "3.4.4",
         "react-spring": "8.0.27",
         "react-use-gesture": "7.0.5",
         "shortid": "2.2.15",
