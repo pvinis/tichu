@@ -1,42 +1,68 @@
-export const Suit = {
-	Jade: 0,
-	Sword: 1,
-	Pagoda: 2,
-	Star: 3,
+import { assertNever } from 'assert-never'
+
+
+export type Suit = 'jade'| 'sword' | 'pagoda' | 'star'
+
+export type CardName =
+| 'two'
+| 'three'
+| 'four'
+| 'five'
+| 'six'
+| 'seven'
+| 'eight'
+| 'nine'
+| 'ten'
+| 'jack'
+| 'queen'
+| 'king'
+| 'ace'
+
+export type SpecialCard =
+| 'majong'
+| 'dog'
+| 'phoenix'
+| 'dragon'
+
+export type NormalCard = { suit: Suit, name: CardName }
+export type Card = NormalCard | SpecialCard
+
+export const isSpecialCard = (card: Card ): card is SpecialCard => {
+	return card === 'majong' || card === 'dog' || card === 'phoenix' || card === 'dragon'
 }
 
-export const CardName = {
-	Two: 2,
-	Three: 3,
-	Four: 4,
-	Five: 5,
-	Six: 6,
-	Seven: 7,
-	Eight: 8,
-	Nine: 9,
-	Ten: 10,
-	Jack: 11,
-	Queen: 12,
-	King: 13,
-	Ace: 14,
+export const isNormalCard = (card: Card): card is NormalCard => {
+	return !isSpecialCard(card)
 }
 
-export const SpecialCard = {
-	Mahjong: 0,
-	Dog: 1,
-
-	// all other cards
-
-	Phoenix: 15,
-	Dragon: 16,
-}
-
-// type Card = SpecialCard | { suit: Suit, name: CardName }
-
-export const cardValue = (card) => {
-	if (typeof card === 'number') {
-		return card
-	} else {
-		return card.name
+export const cardValue = (card: Card): number => {
+	if (isNormalCard(card)) {
+		switch(card.name) {
+			case 'two': return 2
+			case 'three': return 3
+			case 'four': return 4
+			case 'five': return 5
+			case 'six': return 6
+			case 'seven': return 7
+			case 'eight': return 8
+			case 'nine': return 9
+			case 'ten': return 10
+			case 'jack': return 11
+			case 'queen': return 12
+			case 'king': return 13
+			case 'ace': return 14
+			default: assertNever(card.name)
+		}
+	} else if (isSpecialCard(card)) {
+		switch (card) {
+			case 'majong' : return 0
+			case 'dog': return 1
+			case 'phoenix': return 15
+			case 'dragon': return 16
+			default: assertNever(card)
+		}
 	}
+
+	assertNever(card)
+	return -1
 }

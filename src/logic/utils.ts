@@ -1,25 +1,30 @@
-import { SpecialCard, Suit } from './cards'
+import assertNever from 'assert-never'
+
+import { isSpecialCard, Card, isNormalCard, cardValue } from './cards'
 
 
-export const assetForCard = (card) => {
-	switch (card) {
-	case SpecialCard.Dragon:
-		return 'cards/dragon.png'
-	case SpecialCard.Phoenix:
-		return 'cards/phoenix.png'
-	case SpecialCard.Dog:
-		return 'cards/dog.png'
-	case SpecialCard.Mahjong:
-		return 'cards/mahjong.png'
+export const assetForCard = (card: Card): string => {
+	if (isSpecialCard(card)) {
+
+		switch (card) {
+			case 'majong': return 'cards/mahjong.png'
+			case 'dog': return 'cards/dog.png'
+			case 'phoenix': return 'cards/phoenix.png'
+			case 'dragon': return 'cards/dragon.png'
+			default: assertNever(card)
+		}
+	} else if (isNormalCard(card)) {
+		const number = `${cardValue(card)}`.padStart(2, '0')
+		const letter = {
+			'jade': 'c',
+			'sword': 'a',
+			'pagoda': 'b',
+			'star': 'd',
+		}[card.suit]
+
+		return `cards/${number}${letter}.png`
 	}
 
-	const number = `${card.name}`.padStart(2, '0')
-	const letter = {
-		[Suit.Jade]: 'c',
-		[Suit.Sword]: 'a',
-		[Suit.Pagoda]: 'b',
-		[Suit.Star]: 'd',
-	}[card.suit]
-
-	return `cards/${number}${letter}.png`
+	assertNever(card)
+	return ''
 }
