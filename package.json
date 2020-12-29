@@ -31,7 +31,7 @@
     "devDependencies": {
         "@decadejs/eslint-config-base": "1.0.5",
         "@decadejs/eslint-config-react": "1.0.5",
-        "eslint": "6.8.0"
+        "eslint": "7.15.0"
     },
     "browserslist": {
         "production": [
