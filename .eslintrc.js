@@ -85,5 +85,10 @@ module.exports = {
 		// eslint-disable-next-line no-dupe-keys
 		'comma-spacing': OFF,
 		'@typescript-eslint/comma-spacing': ERR,
+
+		'@typescript-eslint/explicit-module-boundary-types': OFF,
 	},
 }
+
+
+///ovverride for the tsx files for react stuff? or eslint file inside the packages?
