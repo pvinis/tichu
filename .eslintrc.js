@@ -87,6 +87,7 @@ module.exports = {
 		'@typescript-eslint/comma-spacing': ERR,
 
 		'@typescript-eslint/explicit-module-boundary-types': OFF,
+		'@typescript-eslint/no-empty-function': OFF,
 	},
 }
 

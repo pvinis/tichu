@@ -4,36 +4,35 @@ import React, { useState, useEffect } from 'react'
 import { Local, SocketIO } from 'boardgame.io/multiplayer'
 import shortid from 'shortid'
 
-import { Config } from '../../../old/src/logic/config'
-import { TichuTable } from '../../../old/src/ui/TichuTable'
-import { Tichu } from './logic/game'
-import { db } from '../../../old/src/logic/firebase'
+import { Config } from './logic/config'
+import { TichuTable } from './ui/TichuTable'
+import { Tichu } from './core/game'
+// import { db } from '../../../old/src/logic/firebase'
 
 
 const TichuClient = Client({
 	game: Tichu,
 	numPlayers: 4,
 	board: TichuTable,
-	multiplayer: Config.useLocalMultiplayer? Local() : SocketIO({server: 'https://tichu-game-server.herokuapp.com'}),
+	multiplayer: Config.useLocalMultiplayer ? Local() : SocketIO({ server: 'https://tichu-game-server.herokuapp.com' }),
 })
 
 export const App = () => {
 	const [id, setId] = useState(0)
-	const [sid, setSid] = useState(undefined)
+	const [sid, setSid] = useState<string|undefined>(undefined)
 	const [roomReady, setRoomReady] = useState(false)
 	const [enteredSid, setEnteredSid] = useState('')
 
 
-
-	const generate = async () =>  {
+	const generate = async () => {
 		setRoomReady(false)
 		const s = shortid.generate()
 		setSid(s)
 
 		const ip4 = await publicIp.v4()
 		const ip6 = await publicIp.v6()
-		await db.collection('ids').doc(s).set({ ip4, ip6 })
-	setRoomReady(true)
+		// await db.collection('ids').doc(s).set({ ip4, ip6 })
+		setRoomReady(true)
 	}
 
 	const connect = () => {

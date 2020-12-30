@@ -1,4 +1,4 @@
-import { __DEV__ } from './globals'
+import { __DEV__ } from '../globals'
 
 
 export const Config = {

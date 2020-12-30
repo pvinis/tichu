@@ -1,6 +1,6 @@
 import assertNever from 'assert-never'
 
-import { isSpecialCard, Card, isNormalCard, cardValue } from 'tichu-game'
+import { Card, cardValue, isNormalCard, isSpecialCard } from './core/cards'
 
 
 export const assetForCard = (card: Card): string => {
