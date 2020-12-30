@@ -1,12 +1,13 @@
 import { Client } from 'boardgame.io/react'
 import publicIp from 'public-ip'
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Local, SocketIO } from 'boardgame.io/multiplayer'
 import shortid from 'shortid'
 
 import { Config } from './logic/config'
 import { TichuTable } from './ui/TichuTable'
 import { Tichu } from './core/game'
+import { Lobby } from './scenes/Lobby'
 // import { db } from '../../../old/src/logic/firebase'
 
 
@@ -17,7 +18,9 @@ const TichuClient = Client({
 	multiplayer: Config.useLocalMultiplayer ? Local() : SocketIO({ server: 'https://tichu-game-server.herokuapp.com' }),
 })
 
+
 export const App = () => {
+	// return <Lobby />
 	const [id, setId] = useState(0)
 	const [sid, setSid] = useState<string|undefined>(undefined)
 	const [roomReady, setRoomReady] = useState(false)
@@ -25,13 +28,13 @@ export const App = () => {
 
 
 	const generate = async () => {
-		setRoomReady(false)
-		const s = shortid.generate()
-		setSid(s)
+	// 	setRoomReady(false)
+	// 	const s = shortid.generate()
+	// 	setSid(s)
 
-		const ip4 = await publicIp.v4()
-		const ip6 = await publicIp.v6()
-		// await db.collection('ids').doc(s).set({ ip4, ip6 })
+		// 	const ip4 = await publicIp.v4()
+		// 	const ip6 = await publicIp.v6()
+		// 	// await db.collection('ids').doc(s).set({ ip4, ip6 })
 		setRoomReady(true)
 	}
 
@@ -63,6 +66,7 @@ export const App = () => {
 				<button onClick={() => setId(1)}>Be Player 1</button>
 				<button onClick={() => setId(2)}>Be Player 2</button>
 				<button onClick={() => setId(3)}>Be Player 3</button>
+				<p>Im player {id}</p>
 				<TichuClient playerID='0' />
 				<TichuClient playerID='1' />
 				<TichuClient playerID='2' />
