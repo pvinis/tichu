@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react'
 import { Local, SocketIO } from 'boardgame.io/multiplayer'
 import shortid from 'shortid'
 
-import { Config } from './logic/config'
-import { TichuTable } from './ui/TichuTable'
+import { Config } from '../../../old/src/logic/config'
+import { TichuTable } from '../../../old/src/ui/TichuTable'
 import { Tichu } from './logic/game'
-import { db } from './logic/firebase'
+import { db } from '../../../old/src/logic/firebase'
 
 
 const TichuClient = Client({
