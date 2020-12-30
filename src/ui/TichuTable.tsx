@@ -7,6 +7,7 @@ import { BoardProps } from 'boardgame.io/dist/types/packages/react'
 
 import { assetForCard } from '../utils'
 import { Card, cardValue } from '../core/cards'
+import { GameState } from '../core/game'
 
 
 //d, playerState: { name, color, cards },  pass }:
@@ -62,7 +63,28 @@ cards: Card[]}): JSX.Element => {
 	)
 }
 
-export const TichuTable = (props: BoardProps): JSX.Element => {
+export const TichuTable = (props: BoardProps<GameState>): JSX.Element => {
+	if (props.ctx.phase === 'betDeclaration') {
+		return (
+			<div>
+				<button
+					disabled={props.G.players[props.playerID!].betDeclaration !== null}
+					onClick={() => props.moves.declareNothing()}
+				>no bet</button>
+				<button
+					disabled={props.G.players[props.playerID!].betDeclaration !== null}
+					onClick={() => props.moves.declareTichu()}
+				>say tichu</button>
+				<button
+					disabled={props.G.players[props.playerID!].betDeclaration !== null}
+					onClick={() => props.moves.declareGrandTichu()}
+				>say GRAND tichu</button>
+				<p>current Player {props.ctx.currentPlayer}</p>
+				<p>waiting for </p>
+			</div>
+		)
+	}
+
 	return (
 		<div>
 			<div>

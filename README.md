@@ -20,11 +20,6 @@ running on heroku?
 rules
 ==
 
-
-There are four suits (Jack, Sword, Pagoda, Star) of 13 cards each corresponding in value to Bridge cards ie. The highest card in each suit being the Ace and the lowest being the "2". The "10's" lie between the "9" and the "Jack".
-
-There are four special cards : Mah Jong, Dog, Phoenix and Dragon (see illustration in German rules) - which brings the total number of cards to 56.
-
 The players play in two teams each of two players. Each player sits opposite his partner and they work together in acquiring points.
 Preparation
 
