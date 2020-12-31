@@ -1,6 +1,6 @@
-import { filter } from 'ramda'
+import { filter } from 'lodash'
 
-import { isNormalCard, isSpecialCard, NormalCard, SpecialCard } from './cards'
+import { isNormalCard, isSpecialCard } from './cards'
 import { createDeck } from './deck'
 
 
@@ -9,11 +9,11 @@ describe(createDeck, () => {
 		const deck = createDeck()
 		expect(deck).toHaveLength(56)
 
-		const normals = filter(isNormalCard)(deck) as NormalCard[]
-		expect(filter((c: NormalCard) => c.suit === 'jade')(normals)).toHaveLength(13)
+		const normals = filter(deck, isNormalCard)
+		expect(filter(normals, c => c.suit === 'jade')).toHaveLength(13)
 
 
-		const specials = filter(isSpecialCard)(deck) as SpecialCard[]
+		const specials = filter(deck, isSpecialCard)
 		expect(specials).toHaveLength(4)
 	})
 })

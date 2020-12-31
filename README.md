@@ -21,11 +21,10 @@ rules
 ==
 
 The players play in two teams each of two players. Each player sits opposite his partner and they work together in acquiring points.
+
 Preparation
 
 The winner of the previous round shuffles and cuts the deck.
-
-Instead of dealing out the cards, each player in turn takes a card from the top of the deck until the pile is exhausted and each player has 14 cards in his hand. Editor's note: We just deal the cards normally by first dealing 8 cards to each player and later giving each player 6 more (the reason for the two phases of dealing is below).
 
 Now give one of your cards to each of the other three players. In effect, then, you will pass on 3 cards of your choice and receive 3 unknown ones in return.
 The Game
