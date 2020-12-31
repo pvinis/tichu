@@ -1,7 +1,7 @@
 
 import { Game } from 'boardgame.io'
 import { TurnOrder } from 'boardgame.io/core'
-import { map, take } from 'lodash'
+import { drop, map, range, take } from 'lodash'
 
 import { Card } from './cards'
 import { createDeck } from './deck'
@@ -26,6 +26,7 @@ export type GameState = {
 	players: {[id: string]: Player}
 	table: Table
 	deck: Card[]
+	trades: { [idToId: string]: Card}
 }
 
 export const Tichu: Game<GameState> = {
@@ -42,8 +43,9 @@ export const Tichu: Game<GameState> = {
 		}
 
 		const table = { cards: [] }
+		const trades = {}
 
-		return { players, table, deck }
+		return { players, table, deck, trades }
 	},
 
 	phases: {
@@ -55,10 +57,8 @@ export const Tichu: Game<GameState> = {
 				},
 			},
 			onBegin: (G, ctx) => {
-				let i = 0
-				take(G.deck, 8 * 4).forEach(card => {
-					G.players[i].cards.push(card)
-					i = (i + 1) % 4
+				range(8 * 4).map(i => {
+					G.players[i % 4].cards.push(G.deck.shift()!)
 				})
 			},
 			moves: {
@@ -78,6 +78,20 @@ export const Tichu: Game<GameState> = {
 			},
 			endIf: (G, ctx) => {
 				return !map(G.players, player => player.betDeclaration !== null).includes(false)
+			},
+			onEnd: (G, ctx) => {
+				range(6 * 4).map(i => {
+					G.players[i % 4].cards.push(G.deck.shift()!)
+				})
+			},
+			next: 'trade',
+		},
+
+		trade: {
+			turn: {
+				activePlayers: {
+					all: 'trade',
+				},
 			},
 			next: 'mainGame',
 		},

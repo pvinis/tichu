@@ -1,13 +1,21 @@
 import { BoardProps } from 'boardgame.io/dist/types/packages/react'
 import { produce } from 'immer'
 import { orderBy } from 'lodash'
-import { useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { animated } from 'react-spring'
 
-import { cardValue } from '../core/cards'
+import { Card, cardValue } from '../core/cards'
 import { GameState } from '../core/game'
 import { assetForCard } from '../utils'
 
+
+const orderCards = (cards: Card[], order: 'asc' |'desc' | undefined) => {
+	if (order === undefined) return cards
+
+	return produce(cards, draft => {
+		return orderBy(draft, [card => cardValue(card)], [order])
+	})
+}
 
 export const Hand = (props: BoardProps<GameState>): JSX.Element => {
 	const cards = props.G.players[props.playerID!].cards
@@ -16,7 +24,10 @@ export const Hand = (props: BoardProps<GameState>): JSX.Element => {
 	// playerState={props.G.players[props.playerID]}
 	// pass={props.moves.pass}
 
-	const [orderedCards, setOrderedCards] = useState(cards)
+
+	const [order, setOrder] = useState<'asc'|'desc'|undefined>(undefined)
+	const orderedCards = useMemo(() => orderCards(cards, order), [cards, order])
+
 	const [selected, setSelected] = useState<number[]>([])
 
 	const toggle = (i: number) => {
@@ -31,24 +42,15 @@ export const Hand = (props: BoardProps<GameState>): JSX.Element => {
 		}))
 	}
 
-	const orderCards = (order: 'asc' |'desc') => {
-		setOrderedCards(produce(orderedCards, draft => {
-			return orderBy(draft, [card => cardValue(card)], [order])
-		}))
-	}
 
 	const myTurn = currentTurnPlayerID === myPlayerID
-	const highlight = props.ctx.phase === 'betDeclaration' || myTurn
+	const highlight = props.ctx.phase !== 'mainGame' || myTurn
 	return (
 		<div style={{ opacity: highlight ? 1 : 0.3 }}>
 			<div style={{ display: 'flex', flexDirection: 'row' }}>
 				{/* <p>{name}</p> */}
-				<button onClick={() => orderCards('asc')}>small - big</button>
-				<button onClick={() => orderCards('desc')}>big - small</button>
-				{/* <button onClick={() => pass()}>PASS</button> */}
-				{props.ctx.phase === 'mainGame' ?
-					<button onClick={() => orderCards('desc')}>PLAY CARDS</button>
-					: null}
+				<button onClick={() => setOrder('asc')}>small - big</button>
+				<button onClick={() => setOrder('desc')}>big - small</button>
 			</div>
 			<div style={{ display: 'flex', flexDirection: 'row', height: 200, alignItems: 'flex-end' }}>
 				{orderedCards.map((card, index) => (

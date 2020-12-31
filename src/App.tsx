@@ -66,7 +66,7 @@ export const App = () => {
 				<button onClick={() => setId(1)}>Be Player 1</button>
 				<button onClick={() => setId(2)}>Be Player 2</button>
 				<button onClick={() => setId(3)}>Be Player 3</button>
-				<p>Im player {id}</p>
+
 				<TichuClient playerID='0' />
 				<TichuClient playerID='1' />
 				<TichuClient playerID='2' />

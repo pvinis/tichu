@@ -14,7 +14,10 @@
 
 
 
-running on heroku?
+- running on heroku?
+
+- highlight the cards that came after bet declaration
+- highlight the cards that came from the others in trade
 
 
 rules
