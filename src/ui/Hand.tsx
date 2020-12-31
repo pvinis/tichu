@@ -1,6 +1,6 @@
 import { BoardProps } from 'boardgame.io/dist/types/packages/react'
 import { produce } from 'immer'
-import { orderBy } from 'lodash'
+import { filter, orderBy, pick } from 'lodash'
 import { useEffect, useMemo, useState } from 'react'
 import { animated } from 'react-spring'
 
@@ -17,8 +17,10 @@ const orderCards = (cards: Card[], order: 'asc' |'desc' | undefined) => {
 	})
 }
 
-export const Hand = (props: BoardProps<GameState>): JSX.Element => {
-	const cards = props.G.players[props.playerID!].cards
+export const Hand = (props: BoardProps<GameState> & {
+	selectedCards: Card[],
+	setSelectedCards: (cards: Card[]) => void
+}): JSX.Element => {
 	const myPlayerID = props.playerID!
 	const currentTurnPlayerID = props.ctx.currentPlayer
 	// playerState={props.G.players[props.playerID]}
@@ -26,9 +28,12 @@ export const Hand = (props: BoardProps<GameState>): JSX.Element => {
 
 
 	const [order, setOrder] = useState<'asc'|'desc'|undefined>(undefined)
-	const orderedCards = useMemo(() => orderCards(cards, order), [cards, order])
+	const orderedCards = useMemo(() => orderCards(props.G.players[props.playerID!].cards, order), [props.G.players[props.playerID!].cards, order])
 
 	const [selected, setSelected] = useState<number[]>([])
+	useEffect(() => {
+		props.setSelectedCards(filter(orderedCards, (card, idx) => selected.includes(idx)))
+	}, [selected])
 
 	const toggle = (i: number) => {
 		setSelected(produce(selected, draft => {

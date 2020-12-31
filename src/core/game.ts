@@ -1,8 +1,10 @@
 
+import assertNever from 'assert-never'
 import { Game } from 'boardgame.io'
 import { TurnOrder } from 'boardgame.io/core'
-import { drop, map, range, take } from 'lodash'
+import { drop, map, pull, range, remove, take } from 'lodash'
 
+import { playerIdAcrossFrom, playerIdLeftOf, playerIdRightOf } from '../utils'
 import { Card } from './cards'
 import { createDeck } from './deck'
 
@@ -92,6 +94,27 @@ export const Tichu: Game<GameState> = {
 				activePlayers: {
 					all: 'trade',
 				},
+			},
+			moves: {
+				give: (G, ctx, who: 'left'|'right'|'across', card: Card) => {
+					const fn = (() => {
+						switch(who) {
+							case 'left': return playerIdLeftOf
+							case 'across': return playerIdAcrossFrom
+							case 'right': return playerIdRightOf
+							default: assertNever(who)
+						}
+					})()
+					const key = `${ctx.playerID!}-${fn(ctx.playerID!)}`
+
+					if (G.trades[key] !== undefined) {
+						G.players[ctx.playerID!].cards.push(G.trades[key])
+					}
+					G.players[ctx.playerID!].cards = pull(G.players[ctx.playerID!].cards, card)
+					G.trades[key] = card
+
+				},
+				lock: () => {},
 			},
 			next: 'mainGame',
 		},

@@ -27,12 +27,12 @@ export type SpecialCard =
 export type NormalCard = { suit: Suit, name: CardName }
 export type Card = NormalCard | SpecialCard
 
-export const isSpecialCard = (card: Card ): card is SpecialCard => {
+export const isSpecialCard = (card: Card |undefined): card is SpecialCard => {
 	return card === 'majong' || card === 'dog' || card === 'phoenix' || card === 'dragon'
 }
 
-export const isNormalCard = (card: Card): card is NormalCard => {
-	return !isSpecialCard(card)
+export const isNormalCard = (card: Card|undefined): card is NormalCard => {
+	return !isSpecialCard(card) && card !== undefined
 }
 
 export const cardValue = (card: Card): number => {
