@@ -1,8 +1,8 @@
 
 import assertNever from 'assert-never'
-import { Game } from 'boardgame.io'
+import { Ctx, Game, Move, PhaseConfig } from 'boardgame.io'
 import { TurnOrder } from 'boardgame.io/core'
-import { drop, map, pull, range, remove, take } from 'lodash'
+import { drop, map, pull, range, remove, take, without } from 'lodash'
 
 import { playerIdAcrossFrom, playerIdLeftOf, playerIdRightOf } from '../utils'
 import { Card } from './cards'
@@ -31,23 +31,69 @@ export type GameState = {
 	trades: { [idToId: string]: Card}
 }
 
+export const initPlayers = () => {
+	const players: {[id: string]: Player} = {
+		'0': { name: 'Alice', color: 'orange', cards: [], betDeclaration: null },
+		'1': { name: 'Beth', color: 'lime', cards: [], betDeclaration: null },
+		'2': { name: 'Chloe', color: 'cyan', cards: [], betDeclaration: null },
+		'3': { name: 'Dana', color: 'purple', cards: [], betDeclaration: null },
+	}
+	return players
+}
+
+export const initGameState = () => {
+	const deck = createDeck()
+
+	const players = initPlayers()
+
+	const table = { cards: [] }
+	const trades = {}
+
+	return { players, table, deck, trades }
+}
+
+export const dealFirst8Cards = (G: GameState, ctx: Ctx) => {
+	range(8 * 4).map(i => {
+		G.players[i % 4].cards.push(G.deck.shift()!)
+	})
+}
+
+export const dealRestCards = (G: GameState, ctx: Ctx) => {
+	range(6 * 4).map(i => {
+		G.players[i % 4].cards.push(G.deck.shift()!)
+	})
+}
+
+export const allPlayersHaveDeclaredBets = (G: GameState, ctx: Ctx): boolean => {
+	return !map(G.players, player => player.betDeclaration !== null).includes(false)
+}
+
+
+export const give = (G: GameState, ctx: Ctx, who: 'left'|'right'|'across', card: Card) => {
+	const fn = (() => {
+		switch(who) {
+			case 'left': return playerIdLeftOf
+			case 'across': return playerIdAcrossFrom
+			case 'right': return playerIdRightOf
+			default: assertNever(who)
+		}
+	})()
+	const key = `${ctx.playerID!}-${fn(ctx.playerID!)}`
+
+	if (G.trades[key] !== undefined) {
+		G.players[ctx.playerID!].cards.push(G.trades[key])
+	}
+	pull(G.players[ctx.playerID!].cards, card)
+	G.trades[key] = card
+
+}
+
+
 export const Tichu: Game<GameState> = {
 	name: 'Tichu',
 
 	setup: (): GameState => {
-		const deck = createDeck()
-
-		const players: {[id: string]: Player} = {
-			'0': { name: 'Alice', color: 'orange', cards: [], betDeclaration: null },
-			'1': { name: 'Beth', color: 'lime', cards: [], betDeclaration: null },
-			'2': { name: 'Chloe', color: 'cyan', cards: [], betDeclaration: null },
-			'3': { name: 'Dana', color: 'purple', cards: [], betDeclaration: null },
-		}
-
-		const table = { cards: [] }
-		const trades = {}
-
-		return { players, table, deck, trades }
+		return initGameState()
 	},
 
 	phases: {
@@ -58,11 +104,7 @@ export const Tichu: Game<GameState> = {
 					all: 'betDeclaration',
 				},
 			},
-			onBegin: (G, ctx) => {
-				range(8 * 4).map(i => {
-					G.players[i % 4].cards.push(G.deck.shift()!)
-				})
-			},
+			onBegin: dealFirst8Cards,
 			moves: {
 				declareGrandTichu: (G, ctx) => {
 					G.players[ctx.playerID!].betDeclaration = 'grand-tichu'
@@ -78,14 +120,8 @@ export const Tichu: Game<GameState> = {
 				},
 
 			},
-			endIf: (G, ctx) => {
-				return !map(G.players, player => player.betDeclaration !== null).includes(false)
-			},
-			onEnd: (G, ctx) => {
-				range(6 * 4).map(i => {
-					G.players[i % 4].cards.push(G.deck.shift()!)
-				})
-			},
+			endIf: allPlayersHaveDeclaredBets,
+			onEnd: dealRestCards,
 			next: 'trade',
 		},
 
@@ -96,24 +132,7 @@ export const Tichu: Game<GameState> = {
 				},
 			},
 			moves: {
-				give: (G, ctx, who: 'left'|'right'|'across', card: Card) => {
-					const fn = (() => {
-						switch(who) {
-							case 'left': return playerIdLeftOf
-							case 'across': return playerIdAcrossFrom
-							case 'right': return playerIdRightOf
-							default: assertNever(who)
-						}
-					})()
-					const key = `${ctx.playerID!}-${fn(ctx.playerID!)}`
-
-					if (G.trades[key] !== undefined) {
-						G.players[ctx.playerID!].cards.push(G.trades[key])
-					}
-					G.players[ctx.playerID!].cards = pull(G.players[ctx.playerID!].cards, card)
-					G.trades[key] = card
-
-				},
+				give,
 				lock: () => {},
 			},
 			next: 'mainGame',
