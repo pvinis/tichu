@@ -69,7 +69,7 @@ export const allPlayersHaveDeclaredBets = (G: GameState, ctx: Ctx): boolean => {
 }
 
 
-export const give = (G: GameState, ctx: Ctx, who: 'left'|'right'|'across', card: Card) => {
+export const give = (G: GameState, ctx: Ctx, who: 'left'|'right'|'across', card: Card): GameState => {
 	const fn = (() => {
 		switch(who) {
 			case 'left': return playerIdLeftOf
@@ -86,6 +86,7 @@ export const give = (G: GameState, ctx: Ctx, who: 'left'|'right'|'across', card:
 	pull(G.players[ctx.playerID!].cards, card)
 	G.trades[key] = card
 
+	return G
 }
 
 
