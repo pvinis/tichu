@@ -8,6 +8,7 @@ import { Config } from './logic/config'
 import { TichuTable } from './ui/TichuTable'
 import { Tichu } from './core/game'
 import { Lobby } from './scenes/Lobby'
+import { store } from './store'
 // import { db } from '../../../old/src/logic/firebase'
 
 

@@ -1,5 +1,4 @@
 import { BoardProps } from 'boardgame.io/dist/types/packages/react'
-import { useState } from 'react'
 
 import { assetForCard } from '../utils'
 import { GameState } from '../core/game'
@@ -11,8 +10,6 @@ import { TurnButtons } from './TurnButtons'
 
 
 export const TichuTable = (props: BoardProps<GameState>): JSX.Element => {
-	const [selectedCards, setSelectedCards] = useState<Card[]>([])
-
 	return (
 		<div>
 			<div>
@@ -27,11 +24,11 @@ export const TichuTable = (props: BoardProps<GameState>): JSX.Element => {
 				: null
 			}
 			{props.ctx.phase === 'trade' ?
-				<TradeUI {...props} selectedCard={selectedCards.length === 1 ? selectedCards[0] : undefined} />
+				<TradeUI {...props} />
 				: null
 			}
 
-			<Hand {...props} selectedCards={selectedCards} setSelectedCards={setSelectedCards} />
+			<Hand {...props} />
 			{props.ctx.phase === 'mainGame' ?
 				<TurnButtons {...props} />
 				: null}
