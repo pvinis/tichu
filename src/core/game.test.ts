@@ -69,12 +69,12 @@ describe('multiplayer', () => {
 			multiplayer: Local(),
 		}
 		const alice = Client({ ...spec, playerID: '0' })
-		const beth = Client({ ...spec, playerID: '1' })
+		const bette = Client({ ...spec, playerID: '1' })
 		const chloe = Client({ ...spec, playerID: '2' })
 		const dana = Client({ ...spec, playerID: '3' })
 
 		alice.start()
-		beth.start()
+		bette.start()
 		chloe.start()
 		dana.start()
 
