@@ -34,7 +34,7 @@ export type GameState = {
 export const initPlayers = () => {
 	const players: {[id: string]: Player} = {
 		'0': { name: 'Alice', color: 'orange', cards: [], betDeclaration: null },
-		'1': { name: 'Beth', color: 'lime', cards: [], betDeclaration: null },
+		'1': { name: 'Bette', color: 'lime', cards: [], betDeclaration: null },
 		'2': { name: 'Chloe', color: 'cyan', cards: [], betDeclaration: null },
 		'3': { name: 'Dana', color: 'purple', cards: [], betDeclaration: null },
 	}
