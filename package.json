@@ -45,7 +45,7 @@
         "@decadejs/eslint-config-react": "1.0.5",
         "@types/body-parser": "1.19.0",
         "@types/express": "4.17.9",
-        "@types/jest": "26.0.19",
+        "@types/jest": "26.0.20",
         "@types/lodash": "4.14.168",
         "@types/node": "14.14.20",
         "@types/react": "17.0.0",
