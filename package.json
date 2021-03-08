@@ -28,7 +28,7 @@
         "react-scripts": "4.0.1",
         "react-spring": "8.0.27",
         "react-use-gesture": "9.0.4",
-        "rxjs": "6.6.3",
+        "rxjs": "6.6.6",
         "rxjs-hooks": "0.6.2",
         "shortid": "2.2.16",
         "shuffle-array": "1.0.1",
