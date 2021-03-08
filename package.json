@@ -20,7 +20,7 @@
         "esm": "3.2.25",
         "express": "4.17.1",
         "firebase": "8.2.10",
-        "lodash": "4.17.20",
+        "lodash": "4.17.21",
         "nodemon": "2.0.7",
         "public-ip": "4.0.3",
         "react": "17.0.1",
