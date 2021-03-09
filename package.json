@@ -12,7 +12,7 @@
     "dependencies": {
         "@testing-library/jest-dom": "5.11.8",
         "@testing-library/react": "11.2.5",
-        "@testing-library/user-event": "12.8.1",
+        "@testing-library/user-event": "12.8.3",
         "assert-never": "1.2.1",
         "boardgame.io": "0.43.3",
         "body-parser": "1.19.0",
