@@ -57,7 +57,7 @@
         "eslint": "7.21.0",
         "eslint-plugin-import": "2.22.1",
         "eslint-plugin-react": "7.22.0",
-        "ts-node-dev": "1.1.1"
+        "ts-node-dev": "1.1.8"
     },
     "proxy": "http://localhost:3001",
     "browserslist": {
